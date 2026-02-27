@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="PikSystems.Ksef.Client" Version="8.0.1" />
+      <PackageReference Include="PikSystems.Ksef.Client" Version="8.0.2" />
     </ItemGroup>
 
 </Project>
