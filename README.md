@@ -21,10 +21,11 @@ var invoice = new InvoiceRequest
     Profile = InvoiceProfile.BasicVat,
     IssueDate = DateTime.UtcNow.Date,
     Currency = "PLN",
+    InvoiceNumber = $"FV/{DateTime.UtcNow:yyyy/MM/dd}/2",
     Buyer = new PartyRequest
     {
         Name = "Acme Sp. z o.o.",
-        Nip = "1234567890",
+        Nip = "7740001454",
         Address = "Warszawa"
     },
     Items = new List<InvoiceItemRequest>
@@ -37,7 +38,7 @@ var invoice = new InvoiceRequest
             VatRate = 23,
             Unit = "szt"
         }
-    }
+    },
 };
 
 var created = await client.SendInvoiceAsync(invoice);

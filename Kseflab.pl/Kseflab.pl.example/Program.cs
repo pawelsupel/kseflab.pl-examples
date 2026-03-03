@@ -42,11 +42,8 @@ var invoice = new InvoiceRequest
 var created = await client.SendInvoiceAsync(invoice);
 Console.WriteLine($"Invoice created: {created.InvoiceId}");
 
-var currentMonth = await client.GetInvoicesForCurrentMonthAsync();
-Console.WriteLine(currentMonth.Invoices.Count);
-
-var previousMonth = await client.GetInvoicesForPreviousMonthAsync();
-Console.WriteLine(currentMonth.Invoices.Count);
+var downloaded = await client.GetInvoiceByKsefNumberAsync("8231665175-20260303-69A820800000-D8");
+Console.WriteLine(downloaded.UpoUrl);
 
 // status by invoice id
 var status = await client.GetInvoiceAsync(created.InvoiceId);
