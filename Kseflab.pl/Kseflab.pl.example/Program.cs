@@ -5,7 +5,7 @@ using PikSystems.Ksef.Client.Contracts;
 
 var client = KsefApiClient.Create(
     "https://piksystems-dev-api-kseflab.azurewebsites.net",
-    "sk_test_9824235f32bd4aa9773778171e91058098f250106f9dd950"); //kept only for dev testing :)
+    "sk_test_78a14c91a9348b2912bb8f612cebb3d54eeb3225aaf8853a"); //kept only for dev testing :)
 
 // await client.StoreKsefCredentialsAsync(new KsefCredentialsRequest()
 // {
@@ -18,10 +18,11 @@ var invoice = new InvoiceRequest
     Profile = InvoiceProfile.BasicVat,
     IssueDate = DateTime.UtcNow.Date,
     Currency = "PLN",
+    InvoiceNumber = $"FV/{DateTime.UtcNow:yyyy/MM/dd}/2",
     Buyer = new PartyRequest
     {
         Name = "Acme Sp. z o.o.",
-        Nip = "3558828768",
+        Nip = "7740001454",
         Address = "Warszawa"
     },
     Items = new List<InvoiceItemRequest>
@@ -34,8 +35,9 @@ var invoice = new InvoiceRequest
             VatRate = 23,
             Unit = "szt"
         }
-    }
+    },
 };
+
 
 var created = await client.SendInvoiceAsync(invoice);
 Console.WriteLine($"Invoice created: {created.InvoiceId}");
